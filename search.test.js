@@ -118,7 +118,7 @@ describe("Search Movies By Cast", () => {
   test("should return movies in ascending order by title", () => {
     const actor = "Christian";
     const result = searchMoviesByCast(movies, actor);
-    console.log(result);
+   
     const sortedResult = result.sort((a, b) =>
       a.movieTitle.localeCompare(b.movieTitle)
     );
