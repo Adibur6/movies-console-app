@@ -1,23 +1,19 @@
 const movies = require("./movies.json"); 
-const expectedProperties = [
-    "id",
-  "movieTitle",
-  "cast",
-  "category",
-  "releaseDate",
-  "budget",
-];
-
+function isMovie(obj) {
+    return obj && typeof obj.id === 'number' &&
+        typeof obj.movieTitle === 'string' &&
+        Array.isArray(obj.cast) && obj.cast.every(cast => typeof cast === 'string') &&
+        typeof obj.category === 'string' &&
+        typeof obj.releaseDate === 'string' &&
+        typeof obj.budget === 'string';
+}
 describe("Movies Data Tests", () => {
   test("Movies data is an array", () => {
     expect(Array.isArray(movies)).toBe(true);
   });
-  test("Objects only contain expected properties", () => {
-    movies.forEach((movie) => {
-      const movieProperties = Object.keys(movie);
-      expect(expectedProperties.sort()).toEqual(movieProperties.sort());
-    });
-  });
+  test('all elements in movies are instances of Movie', () => {
+    expect(movies.every(isMovie)).toBe(true);
+});
 
   test("No info is missing from any movie object", () => {
     movies.forEach((movie) => {

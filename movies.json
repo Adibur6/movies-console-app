@@ -38,5 +38,29 @@
     "category": "Romantic Comedy",
     "releaseDate": "2025-02-14",
     "budget": "$60 million"
+  },
+  {
+    "id": 6,
+    "movieTitle": "The Godfather",
+    "cast": ["Marlon Brando", "Al Pacino", "James Caan"],
+    "category": "Crime",
+    "releaseDate": "1972-03-24",
+    "budget": "$6 million"
+  },
+  {
+    "id": 7,
+    "movieTitle": "The Dark Knight",
+    "cast": ["Christian Bale", "Heath Ledger", "Aaron Eckhart"],
+    "category": "Action",
+    "releaseDate": "2008-07-18",
+    "budget": "$185 million"
+  },
+  {
+    "id": 8,
+    "movieTitle": "The Shawshank Redemption",
+    "cast": ["Tim Robbins", "Morgan Freeman", "Bob Gunton"],
+    "category": "Drama",
+    "releaseDate": "1994-09-23",
+    "budget": "$25 million"
   }
 ]
