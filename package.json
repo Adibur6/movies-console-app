@@ -1,0 +1,20 @@
+{
+  "name": "movies-console-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Adibur6/movies-console-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Adibur6/movies-console-app/issues"
+  },
+  "homepage": "https://github.com/Adibur6/movies-console-app#readme"
+}
