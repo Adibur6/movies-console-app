@@ -16,5 +16,13 @@
   "bugs": {
     "url": "https://github.com/Adibur6/movies-console-app/issues"
   },
-  "homepage": "https://github.com/Adibur6/movies-console-app#readme"
+  "homepage": "https://github.com/Adibur6/movies-console-app#readme",
+  "dependencies": {
+    "boxen": "^7.1.1",
+    "chalk": "^5.3.0",
+    "inquirer": "^9.2.20"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
 }
