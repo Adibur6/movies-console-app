@@ -1,35 +1,35 @@
-import inquirer from 'inquirer';
-import chalk from 'chalk';
-import  displaySearchMenu  from './searchMovies.js';
-
+const inquirer = require("inquirer");
+const chalk = require("chalk");
+const displaySearchMenu = require("./searchMovies");
+const registerOrLogin = require("./registerOrLogin");
 // Define main menu options
 const mainMenu = [
   {
-    type: 'list',
-    name: 'option',
-    message: 'Main Menu:',
+    type: "list",
+    name: "option",
+    message: "Main Menu:",
     choices: [
-      'Register or Login',
-      'Search all movies',
-      'View all movies',
-      'Exit'
-    ]
-  }
+      "Register or Login",
+      "Search all movies",
+      "View all movies",
+      "Exit",
+    ],
+  },
 ];
 
 // Define the function to handle main menu answers
 const handleMainMenuAnswers = (answers) => {
   switch (answers.option) {
-    case 'Register or Login':
-      // registerOrLogin();
+    case "Register or Login":
+      registerOrLogin();
       break;
-    case 'Search all movies':
+    case "Search all movies":
       displaySearchMenu();
       break;
-    case 'View all movies':
+    case "View all movies":
       // viewAllMovies();
       break;
-    case 'Exit':
+    case "Exit":
       console.clear();
       console.log("\n");
       console.log(chalk.cyan("Thanks for using the Movie App! 💖"));
@@ -42,12 +42,11 @@ const handleMainMenuAnswers = (answers) => {
 const displayMainMenu = () => {
   console.clear();
   console.log();
-  console.log(chalk.green('Welcome to the Movie App!'));
+  console.log(chalk.green("Welcome to the Movie App!"));
 
   inquirer.prompt(mainMenu).then(handleMainMenuAnswers);
 };
 
+module.exports = displayMainMenu;
 // Call the displayMainMenu function
 displayMainMenu();
-
-export default displayMainMenu;

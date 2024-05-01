@@ -1,7 +1,11 @@
-import inquirer from 'inquirer';
-import {isEmailValid} from '../user.js';
+const inquirer = require('inquirer');
+const { isEmailValid, addUserEmail } = require('../user');
+const displayMainMenu = require('./mainMenuWithoutLoggIn');
+
+
 
 const registerOrLogin = () => {
+    console.clear();
     inquirer.prompt([
         {
             type: 'input',
@@ -17,13 +21,15 @@ const registerOrLogin = () => {
         }
     ]).then(answers => {
         console.log('Email:', answers.email);
+        addUserEmail(answers.email);
         // Proceed with registration or login logic using the email
+         
     }).catch(error => {
         console.error('Error occurred:', error);
     });
+    displayMainMenu();
 };
 
 // Call the registerOrLogin function
-registerOrLogin();
 
-export default registerOrLogin;
+module.exports=  registerOrLogin;

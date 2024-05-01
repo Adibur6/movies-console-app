@@ -49,5 +49,4 @@ function getFavoriteMovieIds(email) {
 
     return favoriteMovieIds;
 }
-
-export { isEmailValid, addUserEmail, addFavoriteMovie, getFavoriteMovieIds };
+module.exports = { isEmailValid, addUserEmail, addFavoriteMovie, getFavoriteMovieIds };

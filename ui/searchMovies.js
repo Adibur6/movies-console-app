@@ -1,6 +1,6 @@
-import inquirer from 'inquirer';
-import chalk from 'chalk';
-import displayMainMenu from './mainMenuWithoutLoggIn.js';
+const inquirer = require('inquirer');
+const chalk = require('chalk');
+const displayMainMenu = require('./mainMenuWithoutLoggIn.js');
 
 const searchMenu = [
     {
@@ -44,4 +44,4 @@ const displaySearchMenu = () => {
 // Call function to display search menu
 displaySearchMenu();
 
-export default displaySearchMenu;
+module.exports = displaySearchMenu;
