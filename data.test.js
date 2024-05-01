@@ -1,5 +1,6 @@
 const movies = require("./movies.json"); 
 const expectedProperties = [
+    "id",
   "movieTitle",
   "cast",
   "category",
@@ -14,7 +15,7 @@ describe("Movies Data Tests", () => {
   test("Objects only contain expected properties", () => {
     movies.forEach((movie) => {
       const movieProperties = Object.keys(movie);
-      expect(expectedProperties).toEqual(movieProperties);
+      expect(expectedProperties.sort()).toEqual(movieProperties.sort());
     });
   });
 
@@ -27,8 +28,9 @@ describe("Movies Data Tests", () => {
     });
   });
 
-  test("Every movie object is unique", () => {
-    const uniqueMovies = new Set(movies.map((movie) => JSON.stringify(movie)));
+  test("Every movie object id is unique", () => {
+    const uniqueMovies = new Set(movies.map((movie) => movie.id));
     expect(uniqueMovies.size).toBe(movies.length);
   });
+
 });

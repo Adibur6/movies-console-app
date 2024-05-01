@@ -1,38 +1,42 @@
 [
-    {
-      "movieTitle": "Journey Through the Stars",
-      "cast": ["John Spacey", "Emma Quasar", "Liam Neutron"],
-      "category": "Science Fiction",
-      "releaseDate": "2024-12-17",
-      "budget": "$100 million"
-    },
-    {
-      "movieTitle": "The Last Painter",
-      "cast": ["Claire Canvas", "Vincent Brush", "Pablo Palette"],
-      "category": "Drama",
-      "releaseDate": "2025-03-22",
-      "budget": "$40 million"
-    },
-    {
-      "movieTitle": "Code of Tomorrow",
-      "cast": ["Alice Algorithm", "Bob Binary", "Charlie Compiler"],
-      "category": "Thriller",
-      "releaseDate": "2024-08-30",
-      "budget": "$80 million"
-    },
-    {
-      "movieTitle": "Whispers of the Ancient",
-      "cast": ["Sara Scrolls", "Daniel Dynasty", "Olivia Oracle"],
-      "category": "Adventure",
-      "releaseDate": "2024-11-15",
-      "budget": "$95 million"
-    },
-    {
-      "movieTitle": "Love in the Time of AI",
-      "cast": ["Eve Electron", "Adam Atom", "Turing Lovebot"],
-      "category": "Romantic Comedy",
-      "releaseDate": "2025-02-14",
-      "budget": "$60 million"
-    }
-  ]
-  
+  {
+    "id": 1,
+    "movieTitle": "Journey Through the Stars",
+    "cast": ["John Spacey", "Emma Quasar", "Liam Neutron"],
+    "category": "Science Fiction",
+    "releaseDate": "2024-12-17",
+    "budget": "$100 million"
+  },
+  {
+    "id": 2,
+    "movieTitle": "The Last Painter",
+    "cast": ["Claire Canvas", "Vincent Brush", "Pablo Palette"],
+    "category": "Drama",
+    "releaseDate": "2025-03-22",
+    "budget": "$40 million"
+  },
+  {
+    "id": 3,
+    "movieTitle": "Code of Tomorrow",
+    "cast": ["Alice Algorithm", "Bob Binary", "Charlie Compiler"],
+    "category": "Thriller",
+    "releaseDate": "2024-08-30",
+    "budget": "$80 million"
+  },
+  {
+    "id": 4,
+    "movieTitle": "Whispers of the Ancient",
+    "cast": ["Sara Scrolls", "Daniel Dynasty", "Olivia Oracle"],
+    "category": "Adventure",
+    "releaseDate": "2024-11-15",
+    "budget": "$95 million"
+  },
+  {
+    "id": 5,
+    "movieTitle": "Love in the Time of AI",
+    "cast": ["Eve Electron", "Adam Atom", "Turing Lovebot"],
+    "category": "Romantic Comedy",
+    "releaseDate": "2025-02-14",
+    "budget": "$60 million"
+  }
+]
