@@ -1,11 +1,11 @@
 const inquirer = require("inquirer");
 const chalk = require("chalk");
-const { isEmailValid, addUserEmail } = require("./user");
-const {searchMoviesByTitle, searchMoviesByCast, searchMoviesByCategory} = require("./search");
-const {addFavoriteMovie, getFavoriteMovieIds} = require("./user");
-const movies = require("./movies.json");  
-
+const { isEmailValid, addUserEmail } = require("../controllers/user");
+const {searchMoviesByTitle, searchMoviesByCast, searchMoviesByCategory} = require("../controllers/search");
+const {addFavoriteMovie, getFavoriteMovieIds} = require("../controllers/user");
+const movies = require("../data/movies.json");  
 const boxen = require("boxen");   
+
 let email = "";
 
 function displayMainMenu() {

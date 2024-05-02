@@ -8,7 +8,7 @@ function isEmailValid(email) {
 function addUserEmail(email) {
     let userData = {};
     try {
-        const data = fs.readFileSync('user.json', 'utf8');
+        const data = fs.readFileSync('./src/data/user.json', 'utf8');
         
         userData = JSON.parse(data);
     } catch (error) {
@@ -17,7 +17,7 @@ function addUserEmail(email) {
 
     userData[email] = userData[email] || [];
 
-    fs.writeFileSync('user.json', JSON.stringify(userData, null, 2));
+    fs.writeFileSync('./src/data/user.json', JSON.stringify(userData, null, 2));
     
 
 }
@@ -25,7 +25,7 @@ function addUserEmail(email) {
 function addFavoriteMovie(email, movieIds) {
     let userData = {};
     try {
-        const data = fs.readFileSync('user.json', 'utf8');
+        const data = fs.readFileSync('./src/data/user.json', 'utf8');
         userData = JSON.parse(data);
     } catch (error) {
         console.error('Error reading user data:', error);
@@ -33,13 +33,13 @@ function addFavoriteMovie(email, movieIds) {
 
     userData[email] = movieIds;
 
-    fs.writeFileSync('user.json', JSON.stringify(userData, null, 2));
+    fs.writeFileSync('./src/data/user.json', JSON.stringify(userData, null, 2));
 }
 
 function getFavoriteMovieIds(email) {
     let userData = {};
     try {
-        const data = fs.readFileSync('user.json', 'utf8');
+        const data = fs.readFileSync('./src/data/user.json', 'utf8');
         userData = JSON.parse(data);
     } catch (error) {
         console.error('Error reading user data:', error);

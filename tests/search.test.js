@@ -2,8 +2,8 @@ const {
   searchMoviesByTitle,
   searchMoviesByCast,
   searchMoviesByCategory,
-} = require("./search");
-const movies = require("./movies.json");
+} = require("../src/controllers/search");
+const movies = require("../src/data/movies.json");
 const customMovies = [
   {
     id: 1,

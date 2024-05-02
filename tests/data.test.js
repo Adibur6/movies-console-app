@@ -1,4 +1,4 @@
-const movies = require("./movies.json"); 
+const movies = require("../src/data/movies.json"); 
 function isMovie(obj) {
     return obj && typeof obj.id === 'number' &&
         typeof obj.movieTitle === 'string' &&
