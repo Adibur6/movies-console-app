@@ -15,7 +15,7 @@ function addUserEmail(email) {
         console.error('Error reading user data:', error);
     }
 
-    userData[email] = [];
+    userData[email] = userData[email] || [];
 
     fs.writeFileSync('user.json', JSON.stringify(userData, null, 2));
     

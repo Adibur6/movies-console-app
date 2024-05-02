@@ -2,7 +2,9 @@ const inquirer = require("inquirer");
 const chalk = require("chalk");
 const { isEmailValid, addUserEmail } = require("./user");
 const {searchMoviesByTitle, searchMoviesByCast, searchMoviesByCategory} = require("./search");
-const movies = require("./movies.json");    
+const {addFavoriteMovie, getFavoriteMovieIds} = require("./user");
+const movies = require("./movies.json");  
+
 const boxen = require("boxen");   
 let email = "";
 
@@ -14,8 +16,8 @@ function displayMainMenu() {
             message: "Main Menu:",
             choices: [
                 "Register or Login",
-                "Search all movies",
-                "View all movies",
+                "Search all Movies",
+                "View all Movies",
                 "Exit",
             ],
         },
@@ -26,11 +28,11 @@ function displayMainMenu() {
             case "Register or Login":
                 registerOrLogin();
                 break;
-            case "Search all movies":
-                displaySearchMenu();
+            case "Search all Movies":
+                displaySearchMenu(movies, "Search all Movies");
                 break;
-            case "View all movies":
-                // viewAllMovies();
+            case "View all Movies":
+                displayMovies(movies, "Showing all Movies!");
                 break;
             case "Exit":
                 console.clear();
@@ -77,12 +79,12 @@ function registerOrLogin() {
 }
 
 
-function displaySearchMenu() {
+function displaySearchMenu(movies,text) {
     const searchMenu = [
         {
             type: "list",
             name: "searchOption",
-            message: email ? `You're logged in as ${email}\nCurrent Path: Search all movies` : "Current Path: Search all movies",
+            message: "Options:",
             choices: [
                 "Search via Title",
                 "Search Via Category",
@@ -91,17 +93,19 @@ function displaySearchMenu() {
             ],
         },
     ];
+    console.clear();
+    console.log(chalk.green(`Current Path: ${text}`));
 
     const handleSearchMenuAnswers = (answers) => {
         switch (answers.searchOption) {
             case "Search via Title":
-                displaySearchInput("Title");
+                displaySearchInput(movies,"Title");
                 break;
             case "Search Via Category":
-                displaySearchInput("Category");
+                displaySearchInput(movies,"Category");
                 break;
             case "Search via Cast":
-                displaySearchInput("Cast");
+                displaySearchInput(movies,"Cast");
                 break;
             case "Back to Main menu":
                 if (email === "") {
@@ -116,7 +120,7 @@ function displaySearchMenu() {
     console.clear();
     inquirer.prompt(searchMenu).then(handleSearchMenuAnswers);
 }
-function displaySearchInput(searchOption) {
+function displaySearchInput(movies,searchOption) {
     const searchMenu = [
         {
             type: 'input',
@@ -249,6 +253,39 @@ function displayAMovie(selectedMovieObject,movies=[]) {
         console.error('Error occurred:', error);
     });
 }
+function displayAddFavorite() {
+    favorites= getFavoriteMovieIds(email);
+    allMovies = movies;
+    const favoriteTitles = favorites.map(favoriteId => {
+        const movie = allMovies.find(movie => movie.id === favoriteId);
+        return movie ? { id: movie.id, title: movie.movieTitle } : null;
+    }).filter(movie => movie !== null);
+
+    const movieChoices = allMovies.map(movie => ({
+        name: movie.movieTitle,
+        value: movie.id,
+        checked: favoriteTitles.some(favorite => favorite.id === movie.id)
+    }));
+    console.clear();
+    console.log(chalk.green('Current Path: Add/Remove favorite Movies!'));
+    console.log(chalk.bold.red("Press space to select the movie and Press enter to submit."));
+    inquirer.prompt([
+        {
+            type: 'checkbox',
+            name: 'selectedMovies',
+            message: 'Select favorite movies:',
+            choices: movieChoices
+        }
+    ]).then((answers) => {
+        addFavoriteMovie(email, answers.selectedMovies);
+        console.log('Selected movie IDs:', answers.selectedMovies);
+        displayMainMenu2();
+
+        // Implement logic to handle selected movie IDs
+    }).catch((error) => {
+        console.error('Error occurred:', error);
+    });
+}
 
 
 
@@ -260,12 +297,11 @@ const displayMainMenu2 = () => {
             name: 'option',
             message: `Main Menu:`,
             choices: [
-                'Search all movies',
-                'View all movies',
-                'Add favourite Movie',
-                'Remove favorite Movie',
-                'Search Favourite movie',
-                'Personal info and Favourite movies',
+                'Search all Movies',
+                'View all Movies',
+                'Add/Remove Favourite Movie',
+                'Search Favourite Movie',
+                'Favourite Movies',
                 `Logout (${email})`,
                 'Exit'
             ]
@@ -276,30 +312,40 @@ const displayMainMenu2 = () => {
 
     inquirer.prompt(menu).then((answers) => {
         switch (answers.option) {
-            case 'Search all movies':
-                displaySearchMenu();
+            case 'Search all Movies':
+                displaySearchMenu(movies,"Search all Movies");
                 break;
-            case 'View all movies':
+            case 'View all Movies':
                 displayMovies(movies, 'Showing all Movies!');
                 break;
-            case 'Add favourite Movie':
-                // Handle add favorite movie
+            case 'Add/Remove Favourite Movie':
+                displayAddFavorite();
                 break;
-            case 'Remove favorite Movie':
-                // Handle remove favorite movie
-                break;
-            case 'Search Favourite movie':
+            
+            case 'Search Favourite Movie':
                 // Handle search favorite movie
-                break;
-            case 'Personal info and Favourite movies':
+                {
+
+                    const favoriteMoviesIds = getFavoriteMovieIds(email);
+                    const favoriteMovies = movies.filter(movie => favoriteMoviesIds.includes(movie.id));
+                    displaySearchMenu(favoriteMovies, 'Search favorite Movies!');
+                }
+                    break;
+            case 'Favourite Movies':
                 // Handle personal info and favorite movies
+                const favoriteMoviesIds = getFavoriteMovieIds(email);
+                const favoriteMovies = movies.filter(movie => favoriteMoviesIds.includes(movie.id));
+                displayMovies(favoriteMovies, 'Showing favorite Movies!');
                 break;
             case `Logout (${email})`:
-                console.log('Logging out...');
+                
                 email = "";
+                displayMainMenu();
                 break;
             case 'Exit':
-                console.log('Exiting...');
+                console.clear();
+                console.log("\n");
+                console.log(chalk.cyan("Thanks for using the Movie App! 💖"));
                 process.exit(0);
                 break;
         }
