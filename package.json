@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/Adibur6/movies-console-app#readme",
   "dependencies": {
-    "boxen": "^7.1.1",
+    "boxen": "^3.2.0",
     "chalk": "^2.4.2",
     "inquirer": "^8.0.0"
   },
